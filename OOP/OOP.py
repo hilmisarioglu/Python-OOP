@@ -117,41 +117,54 @@
 # -----------------------------------------------------------------------------
 
 #inheritance and polymorphism
-class Person:
-    company = 'Clarusway'
-    def __init__(self,name,age):
-        self.name= name
-        self.age = age
+# class Person:
+#     company = 'Clarusway'
+#     def __init__(self,name,age):
+#         self.name= name
+#         self.age = age
     
-    def __str__(self): # attribute lari göstermek icin
-        return f'Name: {self.name} , Age:{self.age}'
+#     def __str__(self): # attribute lari göstermek icin
+#         return f'Name: {self.name} , Age:{self.age}'
     
-    def details(self):
-        return f'Name {self.name} Age : {self.age}'
+#     def details(self):
+#         return f'Name {self.name} Age : {self.age}'
 
-class Lang:
-    def __init__(self,langs):
-        self.langs = langs
+# class Lang:
+#     def __init__(self,langs):
+#         self.langs = langs
 
-class Employee(Person, Lang): # Kendim de bastan nit yazabilirdim oun yerine super kullandim
-    def __init__(self,name,age,path):
-        # self.name = name
-        # self.age = age
-        super().__init__(name,age)
-        Lang.__init__(self,['Python','JS'])
-        self.path = path
+# class Employee(Person, Lang): # Kendim de bastan nit yazabilirdim oun yerine super kullandim
+#     def __init__(self,name,age,path):
+#         # self.name = name
+#         # self.age = age
+#         super().__init__(name,age)
+#         Lang.__init__(self,['Python','JS'])
+#         self.path = path
     
-    def __str__(self): # attribute lari göstermek icin
-        return f'Name: {self.name} , Age:{self.age}, Path:{self.path}'
+#     def __str__(self): # attribute lari göstermek icin
+#         return f'Name: {self.name} , Age:{self.age}, Path:{self.path}'
     
-    #override
-    def details(self):
-        super().details()
-        print( f'Name {self.name} Age : {self.age}, Path:{self.path}' )
+#     #override
+#     def details(self):
+#         super().details()
+#         print( f'Name {self.name} Age : {self.age}, Path:{self.path}' )
   
 
-emp1 = Employee('Hilmi', 27, 'FS')
-# print(emp1)
-print(emp1.details())
-print(Employee.mro()) #soyagacini gosterir
+# emp1 = Employee('Hilmi', 27, 'FS')
+# # print(emp1)
+# print(emp1.details())
+# print(Employee.mro()) #soyagacini gosterir
+
+# #Djangoda  bu iki özellik(inheritance and polymorphism) cok kullanilacak, biz class yazmcaz ihtiyacimiz olan yerleri kullanicaz
+
+# -------------------------------------
+#inner class , yine  kullanacagiz
+
+from django.db import models
+class Article (models.Model):
+    first_name = models.CharField(max_length = 30)
+    last_name = models.CharField(max_length = 30)
+
+    class Meta:
+        ordering = ["last_name"]
 
