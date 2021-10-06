@@ -129,11 +129,16 @@ class Person:
     def details(self):
         return f'Name {self.name} Age : {self.age}'
 
-class Employee(Person): # Kendim de bastan nit yazabilirdim oun yerine super kullandim
+class Lang:
+    def __init__(self,langs):
+        self.langs = langs
+
+class Employee(Person, Lang): # Kendim de bastan nit yazabilirdim oun yerine super kullandim
     def __init__(self,name,age,path):
         # self.name = name
         # self.age = age
         super().__init__(name,age)
+        Lang.__init__(self,['Python','JS'])
         self.path = path
     
     def __str__(self): # attribute lari göstermek icin
@@ -141,10 +146,12 @@ class Employee(Person): # Kendim de bastan nit yazabilirdim oun yerine super kul
     
     #override
     def details(self):
-        return f'Name {self.name} Age : {self.age}, Path:{self.path}'
+        super().details()
+        print( f'Name {self.name} Age : {self.age}, Path:{self.path}' )
   
 
 emp1 = Employee('Hilmi', 27, 'FS')
 # print(emp1)
 print(emp1.details())
 print(Employee.mro()) #soyagacini gosterir
+
